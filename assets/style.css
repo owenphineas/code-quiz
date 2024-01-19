@@ -1,0 +1,42 @@
+* {
+    background-color:darkgray;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    list-style-type: none;
+    margin: 0;
+}
+
+div {
+    position: absolute;
+    top:25%;
+    width:100%;
+    text-align: center;
+}
+
+header ul {
+    width:auto;
+    text-align:center;
+    display:flex;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+}
+
+/* Sets the default screen display */
+.enter-screen {
+    display:block;
+}
+
+.questions {
+    display:none;
+}
+
+.finish {
+    display:none;
+}
+
+.high-scores {
+    display:none;
+}
+
+.play-again {
+    display:none;
+}
