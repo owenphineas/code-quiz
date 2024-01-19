@@ -8,5 +8,45 @@
 </head>
 
 <body>
+    <header>
+        <ul>
+            <li>View High Scores</li>
+            <li>Time 60</li>
+        </ul>
+    </header>
+    <!-- Welcome Screen -->
+    <div class="enter-screen" id="enterScreen">
+        <h1>Code Quiz Challenge</h1>
+        <h2>Enter</h2>
+    </div>
+    <!-- Questions -->
+    <div class="questions" id="questions">
+        <div class="q" id="q">
+            <h1>This is a question</h1>
+            <ol type="A" class="answer" id="answer">
+                <li>Answer A</li>
+                <li>Answer B</li>
+                <li>Answer C</li>
+                <li>Answer D</li>
+            </ol>
+        </div>
+    </div>
+    <!-- Finished Screen -->
+    <div class="finish" id="finish">
+        <h1>All Done!</h1>
+        <h2 class="final-score" id="finalScore">Your Final Score is 0</h2>
+        <h3>Enter Initials</h3>
+        <input type="text" id="initials" class="initials" minlength="1" maxlength="3" required>
+        <input type="button" id="submitBtn" value="Submit">
+    </div>
+    <!-- High Scores -->
+    <div class="high-scores" id="highScores">
+        <h1>High Scores</h1>
+    </div>
+    <!-- Play Again Screen -->
+    <div class="play-again" id="playAgain">
+        <input type="button" id="playagainBtn" value="Play Again?">
+    </div>
+    
     <script src="./assets/script.js"></script>
 </body>
