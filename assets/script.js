@@ -1,18 +1,31 @@
 let secondsLeft = 60;
+let score = 0;
 
 // Page selectors
 let welcomeScreen = document.querySelector("#enterScreen");
-let questionScreen = document.querySelector("#questions");
 let finishedScreen = document.querySelector("#finish");
 let highScoreScreen = document.querySelector("#highScores");
 let playAgainScreen = document.querySelector("#playAgain");
+let q1Screen = document.querySelector("#q1");
+let q2Screen = document.querySelector("#q2");
+let q3Screen = document.querySelector("#q3");
+let q4Screen = document.querySelector("#q4");
+let q5Screen = document.querySelector("#q5");
+let q6Screen = document.querySelector("#q6");
+let q7Screen = document.querySelector("#q7");
 
 function closeScreens() {
     welcomeScreen.style.display = "none";
-    questionScreen.style.display = "none";
     finishedScreen.style.display = "none";
     highScoreScreen.style.display = "none";
     playAgainScreen.style.display = "none";
+    q1Screen.style.display = "none";
+    q2Screen.style.display = "none";
+    q3Screen.style.display = "none";
+    q4Screen.style.display = "none";
+    q5Screen.style.display = "none";
+    q6Screen.style.display = "none";
+    q7Screen.style.display = "none";
 }
 
 function openWelcome() {
@@ -20,14 +33,13 @@ function openWelcome() {
     welcomeScreen.style.display = "block";
 }
 
-function openQuestion() {
-    closeScreens();
-    questionScreen.style.display = "block";
-}
-
 function openFinished() {
+    let finalScore = document.querySelector("#finalScore")
     closeScreens();
+    isTimer = false;
+    score += secondsLeft;
     finishedScreen.style.display = "block";
+    finalScore.textContent = "Your Final Score is " + score;
 }
 
 function openHighScores() {
@@ -41,6 +53,42 @@ function openPlayAgain() {
     playAgainScreen.style.display = "block";
 }
 
+function openq1() {
+    closeScreens();
+    q1Screen.style.display = "block";
+}
+
+function openq2() {
+    closeScreens();
+    q2Screen.style.display = "block";
+}
+
+function openq3() {
+    closeScreens();
+    q3Screen.style.display = "block";
+}
+
+function openq4() {
+    closeScreens();
+    q4Screen.style.display = "block";
+}
+
+function openq5() {
+    closeScreens();
+    q5Screen.style.display = "block";
+}
+
+function openq6() {
+    closeScreens();
+    q6Screen.style.display = "block";
+}
+
+function openq7() {
+    closeScreens();
+    q7Screen.style.display = "block";
+}
+
+// Keeps the timer off by default
 let isTimer = false;
 
 // Makes the timer count down from 60
@@ -61,14 +109,13 @@ function startTimer() {
     }, 1000);
 }
 
-// Starts the timer and switches to questions when the 'Enter' button is clicked
+// Page Navigation
 let enterBtn = document.querySelector("#enterButton");
 enterBtn.addEventListener("click", function() {
     startTimer();
-    openQuestion();
+    openq1();
 });
 
-// Switches to the High Scores screen when "View High Scores" is clicked
 let viewHighScoreBtn = document.querySelector("#viewHighScores");
 viewHighScoreBtn.addEventListener("click", function () {
     openHighScores();
@@ -83,3 +130,39 @@ let playAgainBtn = document.querySelector("#playagainBtn");
 playAgainBtn.addEventListener("click", function() {
     openWelcome();
 });
+
+// Questions
+let correctAnswer = document.querySelectorAll("#q1b, #q2a, #q3d, #q4d, #q5c, #q6a, #q7d");
+let wrongAnswer = document.querySelectorAll("#q1a, #q1c, #q1d, #q2b, #q2c, #q2d, #q3a, #q3b, #q3c, #q4a, #q4b, #q4c, #q5a, #q5b, #q5d, #q6b, #q6c, #q6d, #q7a, #q7b, #q7c");
+function nextQuestion() {
+    if(q1Screen.style.display === "block") {
+        openq2();
+    } else if (q2Screen.style.display === "block") {
+        openq3();
+    } else if (q3Screen.style.display === "block") {
+        openq4();
+    } else if (q4Screen.style.display === "block") {
+        openq5();
+    } else if (q5Screen.style.display === "block") {
+        openq6();
+    } else if (q6Screen.style.display === "block") {
+        openq7();
+    } else if (q7Screen.style.display === "block") {
+        openFinished();
+    }
+}
+
+for (let i=0; i < correctAnswer.length; i++) {
+correctAnswer[i].addEventListener("click", function() {
+    score+=15;
+    console.log(score);
+    nextQuestion();
+});
+}
+
+for (let i=0; i < wrongAnswer.length; i++) {
+wrongAnswer[i].addEventListener("click", function() {
+    secondsLeft-=10;
+    nextQuestion();
+});
+}
