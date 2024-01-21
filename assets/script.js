@@ -33,6 +33,7 @@ function openFinished() {
 function openHighScores() {
     closeScreens();
     highScoreScreen.style.display = "block";
+    isTimer = false;
 }
 
 function openPlayAgain() {
@@ -40,17 +41,24 @@ function openPlayAgain() {
     playAgainScreen.style.display = "block";
 }
 
+let isTimer = false;
+
 // Makes the timer count down from 60
 let timerEl = document.querySelector("#timeText");
 function startTimer() {
+    secondsLeft = 60;
+    isTimer = true;
     let countdownInt = setInterval(function() {
-    secondsLeft--;
-    timerEl.textContent = "Time: " + secondsLeft;
-    if(secondsLeft == 0) {
-        clearInterval(countdownInt);
-        openFinished();
-    }
-}, 1000);
+        secondsLeft--;
+        timerEl.textContent = "Time: " + secondsLeft;
+        if(secondsLeft == 0) {
+            clearInterval(countdownInt);
+            openFinished();
+        } else if(isTimer == false) {
+            secondsLeft = 60;
+            clearInterval(countdownInt);
+        }
+    }, 1000);
 }
 
 // Starts the timer and switches to questions when the 'Enter' button is clicked
