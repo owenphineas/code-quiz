@@ -20,6 +20,10 @@ header ul {
     margin-top: 3rem;
 }
 
+.view-highscores:hover {
+    border-bottom: 2px solid black;
+}
+
 /* Sets the default screen display */
 .enter-screen {
     display:block;
