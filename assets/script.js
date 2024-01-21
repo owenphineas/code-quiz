@@ -14,6 +14,8 @@ let q5Screen = document.querySelector("#q5");
 let q6Screen = document.querySelector("#q6");
 let q7Screen = document.querySelector("#q7");
 
+let alertEl = document.querySelector("#alert")
+
 function closeScreens() {
     welcomeScreen.style.display = "none";
     finishedScreen.style.display = "none";
@@ -38,12 +40,14 @@ function openFinished() {
     closeScreens();
     isTimer = false;
     score += secondsLeft;
+    alertEl.style.display = "none";
     finishedScreen.style.display = "block";
     finalScore.textContent = "Your Final Score is " + score;
 }
 
 function openHighScores() {
     closeScreens();
+    alertEl.style.display = "none";
     highScoreScreen.style.display = "block";
     isTimer = false;
 }
@@ -152,8 +156,13 @@ function nextQuestion() {
     }
 }
 
+// Handles answers
+let alertText = document.querySelector("#alertText");
+
 for (let i=0; i < correctAnswer.length; i++) {
 correctAnswer[i].addEventListener("click", function() {
+    alertEl.style.display = "block";
+    alertText.textContent = "Correct!";
     score+=15;
     console.log(score);
     nextQuestion();
@@ -162,6 +171,8 @@ correctAnswer[i].addEventListener("click", function() {
 
 for (let i=0; i < wrongAnswer.length; i++) {
 wrongAnswer[i].addEventListener("click", function() {
+    alertEl.style.display = "block";
+    alertText.textContent = "Wrong!";
     secondsLeft-=10;
     nextQuestion();
 });

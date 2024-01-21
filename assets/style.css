@@ -44,3 +44,10 @@ header ul {
 .play-again {
     display:none;
 }
+
+.alert {
+    display:none;
+    font-style: italic;
+    color:rgba(0, 0, 0, 0.425);
+    top: 50%;
+}
