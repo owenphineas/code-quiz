@@ -51,3 +51,10 @@ header ul {
     color:rgba(0, 0, 0, 0.425);
     top: 50%;
 }
+.q li {
+    margin-top:1rem;
+}
+
+.q li:hover {
+    color:aliceblue;
+}
