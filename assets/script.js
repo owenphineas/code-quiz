@@ -177,3 +177,22 @@ wrongAnswer[i].addEventListener("click", function() {
     nextQuestion();
 });
 }
+
+// High Scores
+let submitBtn = document.querySelector("#submitBtn");
+let initials = document.querySelector("#initials");
+
+submitBtn.addEventListener("click", function() {
+let scoreObject = {
+    player: initials.value,
+    quizScore: score
+};
+
+localStorage.setItem("playerScore", JSON.stringify(scoreObject));
+openHighScores();
+
+});
+
+function updateScore {
+    if()
+}
