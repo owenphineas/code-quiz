@@ -192,7 +192,3 @@ localStorage.setItem("playerScore", JSON.stringify(scoreObject));
 openHighScores();
 
 });
-
-function updateScore {
-    if()
-}
