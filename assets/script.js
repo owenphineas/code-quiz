@@ -50,6 +50,7 @@ function openHighScores() {
     alertEl.style.display = "none";
     highScoreScreen.style.display = "block";
     isTimer = false;
+    showHighScores();
 }
 
 function openPlayAgain() {
@@ -181,14 +182,26 @@ wrongAnswer[i].addEventListener("click", function() {
 // High Scores
 let submitBtn = document.querySelector("#submitBtn");
 let initials = document.querySelector("#initials");
+let scoreDisplay = document.querySelector("#scoreId");
+
+let highScores = JSON.parse(localStorage.getItem("playerScore"));
+let div = document.querySelector(".high-scores");
+
+var sortedScores = highScores.sort((a, b) => b.quizScore - a.quizScore);
+console.log(sortedScores);
+
+
+function showHighScores() {
+    for (let index = 0; index < 11; index++) {
+        console.log(highScores[index]);
+        let h3 = document.createElement("h3");
+        h3.textContent = `score: ${sortedScores[index].quizScore} initials: ${sortedScores[index].player}`
+        div.appendChild(h3);
+    }
+}
 
 submitBtn.addEventListener("click", function() {
-let scoreObject = {
-    player: initials.value,
-    quizScore: score
-};
-
-localStorage.setItem("playerScore", JSON.stringify(scoreObject));
-openHighScores();
-
+    openHighScores();
 });
+
+
