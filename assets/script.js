@@ -184,10 +184,17 @@ let submitBtn = document.querySelector("#submitBtn");
 let initials = document.querySelector("#initials");
 let scoreDisplay = document.querySelector("#scoreId");
 
+let playerScore = {
+    player: initials.value,
+    quizScore: score
+}
+
 let highScores = JSON.parse(localStorage.getItem("playerScore"));
 let div = document.querySelector(".high-scores");
+let scores = playerScores || [];
+let string = JSON.stringify(scores);
 
-var sortedScores = highScores.sort((a, b) => b.quizScore - a.quizScore);
+var sortedScores = highScores.sort((a, b) => b.playerScore.quizScore - a.playerScore.quizScore);
 console.log(sortedScores);
 
 
@@ -195,12 +202,13 @@ function showHighScores() {
     for (let index = 0; index < 11; index++) {
         console.log(highScores[index]);
         let h3 = document.createElement("h3");
-        h3.textContent = `score: ${sortedScores[index].quizScore} initials: ${sortedScores[index].player}`
+        h3.textContent = `score: ${sortedScores[index].playerScore.quizScore} initials: ${sortedScores[index].playerScore.player}`
         div.appendChild(h3);
     }
 }
 
 submitBtn.addEventListener("click", function() {
+    localStorage.setItem("playerScore", string);
     openHighScores();
 });
 
